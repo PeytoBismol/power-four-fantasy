@@ -1,0 +1,32 @@
+{
+  "name": "power-four-fantasy",
+  "version": "1.0.0",
+  "description": "Sleeper-style fantasy football for the Power Four conferences plus Notre Dame, powered by College Football Data (CFBD).",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "ingest": "node --disable-warning=ExperimentalWarning ingest/ingest.js",
+    "ingest:demo": "node --disable-warning=ExperimentalWarning ingest/ingest.js --demo",
+    "ingest:probe": "node --disable-warning=ExperimentalWarning ingest/ingest.js --probe",
+    "ingest:live": "node --disable-warning=ExperimentalWarning ingest/ingest.js --live",
+    "advance": "node --disable-warning=ExperimentalWarning src/cli.js advance",
+    "status": "node --disable-warning=ExperimentalWarning src/cli.js status",
+    "demo": "node --disable-warning=ExperimentalWarning src/cli.js demo",
+    "backup": "node --disable-warning=ExperimentalWarning src/cli.js backup",
+    "reset-password": "node --disable-warning=ExperimentalWarning src/cli.js reset-password",
+    "injury": "node --disable-warning=ExperimentalWarning src/cli.js injury",
+    "feedback": "node --disable-warning=ExperimentalWarning src/cli.js feedback",
+    "load": "node --disable-warning=ExperimentalWarning scripts/load-test.js",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/*.test.js\"",
+    "test:e2e": "node --disable-warning=ExperimentalWarning test/e2e/run.js",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "playwright": "1.56.0"
+  }
+}

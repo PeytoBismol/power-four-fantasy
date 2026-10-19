@@ -1,0 +1,25 @@
+# Fly.io config. Change `app` to a name nobody else has, then follow the README "Host it on Fly.io" steps.
+app = "power-four-fantasy"
+primary_region = "iad"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "8080"
+  DB_PATH = "/app/data/power-four.sqlite"
+  COOKIE_SECURE = "1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"   # keep it running so the draft timer and week closes never pause
+  auto_start_machines = true
+  min_machines_running = 1
+
+# Persistent volume for the SQLite database. Create it once: fly volumes create pf_data --size 1 --region iad
+[[mounts]]
+  source = "pf_data"
+  destination = "/app/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
